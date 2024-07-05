@@ -1,0 +1,4 @@
+--> run npm install 
+--> npm run build
+--> at last a dist folder is produce simply add that dist path to chrome load unpack extension path
+--> demo video link https://drive.google.com/file/d/1jv7egliGOSJZxkNeE33BAqeQX29y3d1J/view?usp=sharing
