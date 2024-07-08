@@ -1,21 +1,23 @@
 import './MainApp.css'
-import { useBlockedList } from './useBlockedList';
+import { useSetBlockList } from './useSetBlockList';
 import AddDomains from '../add-domain-section/AddDomains';
 import SiteLists from '../display-blacklist-sites/SiteLists';
-import ToggelExtension from '../extension-switch/ToggelExtension';
+import ToggleExtension from '../extension-switch/ToggleExtension';
 import useToggleState from '../../shared/hooks/useToggleState';
+import useModifyBlockList from './useModifyBlockList';
 import useInput from '../../shared/hooks/useInput';
 function MainApp() {
 
-  const { blockedLists, RemoveBlockUrl, AddBlockUrl, inputUrl, handleInput } = useBlockedList();
+  const { inputUrl, HandleInput } = useInput()
+  const { blockedLists, setBlockLists } = useSetBlockList();
   const { checked, HandleToggle } = useToggleState()
-
+  const { RemoveBlockUrl, AddBlockUrl } = useModifyBlockList(inputUrl, blockedLists, setBlockLists);
 
   return (
     <>
-      <ToggelExtension HandleToggle={HandleToggle} checked={checked} />
+      <ToggleExtension HandleToggle={HandleToggle} checked={checked} />
       <div className="card">
-        <AddDomains AddBlockUrl={AddBlockUrl} handleInput={handleInput} />
+        <AddDomains AddBlockUrl={AddBlockUrl} handleInput={HandleInput} />
         <SiteLists RemoveBlockUrl={RemoveBlockUrl} blockedLists={blockedLists} />
       </div >
     </>

@@ -2,7 +2,7 @@
 import Switch from '@mui/material/Switch';
 import useToggleState from '../../shared/hooks/useToggleState';
 
-export default function ToggelExtension() {
+export default function ToggleExtension() {
     const { HandleToggle, checked } = useToggleState()
     return (
         <div >

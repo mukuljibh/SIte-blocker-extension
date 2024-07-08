@@ -4,10 +4,10 @@ import { useState } from "react";
 export default function useInput() {
     const [inputUrl, setInputUrl] = useState();
 
-    function handleInput(event) {
+    function HandleInput(event) {
         setInputUrl(event.target.value)
     }
-    return { handleInput, inputUrl }
+    return { HandleInput, inputUrl }
 }
 
 
