@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
-
+import useInput from "../../shared/hooks/useInput";
 
 export function useBlockedList() {
     const [blockedLists, setBlockLists] = useState([]);
-    const [inputUrl, setInputUrl] = useState("");
-
+    const { inputUrl, handleInput } = useInput()
     useEffect(() => {
         chrome.storage.local.get(['blockedLists'], ({ blockedLists }) => {
             setBlockLists(blockedLists || []);
@@ -33,5 +32,5 @@ export function useBlockedList() {
         }
     }
 
-    return { inputUrl, blockedLists, setInputUrl, RemoveBlockUrl, AddBlockUrl }
+    return { handleInput, inputUrl, blockedLists, RemoveBlockUrl, AddBlockUrl }
 }
